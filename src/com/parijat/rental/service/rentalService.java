@@ -1,6 +1,8 @@
 package com.parijat.rental.service;
 import com.parijat.rental.model.*;
 import com.parijat.rental.exceptions.*;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 public class rentalService{
@@ -40,6 +42,10 @@ public class rentalService{
         activeRentals.put(transactionId, transaction);
         customer customer =customers.get(customerId);
         customer.addTransaction(transaction);
+        saveTransactionToFile(transaction);
+        item.markAsRented();
+        activeRentals.put(transactionId, transaction);
+        customer.addTransaction(transaction);
     }
     public void returnItem(String transactionId) throws InvalidReturnException{
         if (!activeRentals.containsKey(transactionId)){
@@ -60,4 +66,17 @@ public class rentalService{
             System.out.println("Item ID: " + item.getItemId() + "\nAvailable ? : " + check);
         }
     }
-}
+    public void saveTransactionToFile(rentTransaction transaction){
+        try {
+            FileWriter fw = new FileWriter("transactions.csv", true);
+            fw.write(transaction.getTrnscId() + "," +
+                transaction.getItem().getItemId() + "," +
+                 transaction.Days() + "," +
+                 transaction.TotalCost() + "\n");
+
+            fw.close();
+        }catch (IOException e){
+            System.out.println("File error: " + e.getMessage());
+        }
+    }
+}    
