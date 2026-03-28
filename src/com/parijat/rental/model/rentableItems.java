@@ -1,26 +1,29 @@
 package com.parijat.rental.model;
 
-public abstract class rentableItems {
+public abstract class rentableItems{
     private String itemId;
     private double baseRate;
     private boolean available;
 
-    public rentableItems(String itemId, double baseRate) {
+    public rentableItems(String itemId, double baseRate){
         this.itemId = itemId;
         this.baseRate = baseRate;
         this.available = true;
     }
-    public String getItemId() {
+    public String getItemId(){
         return itemId;
     }
-    public double getBaseRate() {
+    public double getBaseRate(){
         return baseRate;
     }
-    public boolean isAvailable() {
+    public boolean isAvailable(){
         return available;
     }
-    protected void setAvailability(boolean status) {
-        this.available = status;
+    public void markAsRented(){
+    this.available = false;
+    }
+    public void markAsReturned(){
+    this.available = true;
     }
     public abstract double calculateRentalCost(int days);
 }
