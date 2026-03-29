@@ -44,7 +44,19 @@ The system will follow a layered architecture separating model classes, business
 ---
 
 ## How to Run
-
+STEP 1: Java(JDK) should be installed on the system (pre-requisite)
+STEP 2: Clone or download the repository by: 
+        git clone <repository-url>
+STEP 3: Open terminal and bash:
+        cd term-ii-project-submission-ParijatBgit
+        to go into the project directory
+STEP 4: Compile the code by using:
+        javac src/com/parijat/rental/**/*.java
+STEP 5: Run the program:
+        java -cp src com.parijat.rental.main.Main
+STEP 6: Use the program:
+        Follow the program menu instruction to use rental system.
+After a succesful rental procedure is done, a file named "transactions.csv" will be created automatically
 ---
 
 ## Git Discipline Notes
