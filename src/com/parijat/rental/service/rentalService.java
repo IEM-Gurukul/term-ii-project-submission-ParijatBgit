@@ -38,6 +38,7 @@ public class rentalService{
             throw new ItemNotAvailableException("Item is not available");
         }
         rentTransaction transaction =new rentTransaction(transactionId, item, days);
+        System.out.println("Total Rental Cost: " + transaction.TotalCost());
         item.markAsRented();
         activeRentals.put(transactionId, transaction);
         customer customer =customers.get(customerId);
